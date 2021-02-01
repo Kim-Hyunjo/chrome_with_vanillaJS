@@ -14,7 +14,7 @@ function handleSubmit(event){
 }
 
 function askForName(){
-    greetingForm.classList.add("showing");
+    greetingForm.classList.add("showing"); //greetingForm의 클래스 리스트에 '.showing'을 추가함으로써 화면에 보이게 된다.
     greetingForm.addEventListener("submit", handleSubmit);
 }
 
@@ -27,7 +27,7 @@ function getName(){
     }
 }
 
-function setInnerText(){
+function setInnerText(){  // index.html에서 <script>호출시 clock.js가 현 파일보다 먼저 나오기 때문에 변수를 가져다 쓸 수 있다.
     hour = date.getHours();
     return hour < 12 ? 'Good morning' : hour < 19 ? 'Good afternoon' : 'Good evening'
 }
