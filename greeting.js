@@ -11,6 +11,7 @@ function handleSubmit(event){
     const currVal = greetingInput.value;
     saveName(currVal);
     setName(currVal);
+    greetingInput.value = "";
 }
 
 function askForName(){
