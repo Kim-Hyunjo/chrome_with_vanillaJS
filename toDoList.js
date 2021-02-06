@@ -2,9 +2,19 @@ const todoForm = document.querySelector(".js-todo"),
     todoInput = todoForm.querySelector(".js-todo-input"),
     todoList = document.querySelector(".js-todo-list");
 
-const todos = [];
+let todos = [];
 
 //init -> load todos -> paint todos -> save
+function deleteTodo(event){
+    const btn = event.target;
+    const li = btn.parentNode;
+    todoList.removeChild(li);
+    const cleanTodos = todos.filter(function(todo){
+        return todo.id !== parseInt(li.id);
+    });
+    todos = cleanTodos;
+    saveTodos();
+}
 
 function loadTodos(){ //local에 저장된 todos를 불러와서 존재하면 파싱 후 paintTodos호출한다.
     const loadedTodos = localStorage.getItem("todo_LS");
@@ -33,6 +43,7 @@ function paintTodos(text){ // todos를 화면에 나타나게 한다.
     const span = document.createElement("span");
     const newId = todos.length + 1;
     delBtn.innerText = "❌";
+    delBtn.addEventListener("click", deleteTodo);
     span.innerText = text;
     li.id = newId;
     li.appendChild(delBtn);
